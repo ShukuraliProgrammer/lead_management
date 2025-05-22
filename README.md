@@ -11,6 +11,10 @@ You can also view the full interactive system design diagram here:
 🔗 [View System Design](https://app.diagrams.net/?splash=0#G11fVxeiPvarrCkrntGL6YLDcO9IEQavrz#%7B%22pageId%22%3A%22ZP3VNHhl2aMxR3FIKjDi%22%7D)
 
 
+> **Note:**  
+> While the current implementation does **not** include external file storage (e.g., AWS S3 or MinIO),  
+> the system design diagram includes this component to illustrate a scalable architecture for future enhancements.
+
 ---
 
 ## 🗃️ Database Design
