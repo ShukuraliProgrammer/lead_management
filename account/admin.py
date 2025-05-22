@@ -6,7 +6,7 @@ from .models import User
 
 @admin.register(User)
 class UserAdmin(DjangoUserAdmin):
-    list_display = ['id', 'username', 'first_name', 'last_name']
+    list_display = ['id', 'username', 'first_name', 'last_name', "role"]
     fieldsets = (
         (None, {"fields": ("username", "password")}),
         (_("Personal info"), {"fields": ("first_name", "last_name", "email", "role")}),
@@ -23,4 +23,13 @@ class UserAdmin(DjangoUserAdmin):
             },
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+    )
+    add_fieldsets = (
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": ("username", "role", "usable_password", "password1", "password2"),
+            },
+        ),
     )

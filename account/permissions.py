@@ -5,7 +5,6 @@ User = get_user_model()
 
 
 class IsAttorney(permissions.BasePermission):
-
     def has_permission(self, request, view):
         if request.user.role == User.UserRole.ATTORNEY:
             return True

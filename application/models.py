@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 from django.utils.translation import gettext_lazy as _
 
 class Application(models.Model):
@@ -9,7 +10,20 @@ class Application(models.Model):
     first_name = models.CharField(_('first name'), max_length=255)
     last_name = models.CharField(_('last name'), max_length=255)
     email = models.EmailField(_('email'), max_length=125)
-    resume = models.FileField(_('resume/cv'), upload_to="resumes/")
+    resume = models.FileField(_('resume/cv'), upload_to="resumes/",
+                              validators=[
+                                  FileExtensionValidator(
+                                      allowed_extensions=[
+                                          "pdf",
+                                          "docx",
+                                          "doc",
+                                          "pptx",
+                                          "ppt",
+                                          "txt",
+                                      ]
+                                  )
+                              ],
+                              )
     status = models.CharField(_('status'), max_length=60, choices=ApplicationStatus.choices,
                               default=ApplicationStatus.PENDING)
 
